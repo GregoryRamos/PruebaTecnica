@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { student } from '../interface/student';
 
 @Injectable({
@@ -27,6 +26,10 @@ export class StudentService {
 
   addStudent(student: student): Observable<student>{
     return this.http.post<student>(this.myAppUrl + this.myApiUrl, student);
+  }
+
+  updateStudent(student: student): Observable<void>{
+    return this.http.put<void>(this.myAppUrl + this.myApiUrl, student )
   }
 
 }

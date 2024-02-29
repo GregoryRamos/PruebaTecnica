@@ -5,6 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListadoStudentComponent } from './components/listado-student/listado-student.component';
 import { AgregarEditarStudentComponent } from './components/agregar-editar-student/agregar-editar-student.component';
 import { VerStudentComponent } from './components/ver-student/ver-student.component';
+import { AttendaceComponent } from './components/attendace/attendace.component';
+import { GradesComponent } from './components/grades/grades.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'liststudents', pathMatch: 'full'},
@@ -12,6 +14,8 @@ const routes: Routes = [
   { path: 'agregarstudent', component: AgregarEditarStudentComponent},
   { path: 'verstudent/:id', component: VerStudentComponent},
   { path: 'editarstudent/:id', component: AgregarEditarStudentComponent},
+  { path: 'attendace', component: AttendaceComponent},
+  { path: 'grades', component: GradesComponent},
   { path: '**', redirectTo: 'liststudents', pathMatch: 'full'},
 ];
 

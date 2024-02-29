@@ -36,6 +36,7 @@ namespace WebAppProfesores.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateStudent([FromBody] Student student)
         {
+            
             await _studentService.CreateAsync(student);
             return CreatedAtAction(nameof(GetStudentById), new { id = student.Id }, student);
         }
@@ -50,7 +51,7 @@ namespace WebAppProfesores.Controllers
                     throw new Exception("No puede existir un estudiante sin nombre");
                 }
                 await _studentService.UpdateAsync(student);
-                return Ok();
+                return NoContent();
             }
             catch (Exception e)
             {

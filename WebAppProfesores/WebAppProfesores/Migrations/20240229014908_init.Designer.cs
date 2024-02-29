@@ -12,8 +12,8 @@ using WebAppProfesores.Model;
 namespace WebAppProfesores.Migrations
 {
     [DbContext(typeof(StudentContext))]
-    [Migration("20240224213356_Inicial")]
-    partial class Inicial
+    [Migration("20240229014908_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -46,6 +46,10 @@ namespace WebAppProfesores.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("StudentId");
+
+                    b.HasIndex("SubjectId");
 
                     b.ToTable("Attendaces");
                 });
@@ -114,6 +118,61 @@ namespace WebAppProfesores.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Subjects");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "n/a",
+                            Name = "Lengua Española"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "n/a",
+                            Name = "Matemáticas"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "n/a",
+                            Name = "Ciencias Sociales"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Description = "n/a",
+                            Name = "Ciencias Naturales"
+                        });
+                });
+
+            modelBuilder.Entity("WebAppProfesores.Model.Attendace", b =>
+                {
+                    b.HasOne("WebAppProfesores.Model.Student", "Student")
+                        .WithMany("Attendances")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebAppProfesores.Model.Subject", "Subject")
+                        .WithMany("Attendances")
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Student");
+
+                    b.Navigation("Subject");
+                });
+
+            modelBuilder.Entity("WebAppProfesores.Model.Student", b =>
+                {
+                    b.Navigation("Attendances");
+                });
+
+            modelBuilder.Entity("WebAppProfesores.Model.Subject", b =>
+                {
+                    b.Navigation("Attendances");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -12,6 +14,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //modulos
 import { SharedModule } from './shared/shared.module';
+import { AttendaceComponent } from './components/attendace/attendace.component';
+import { GradesComponent } from './components/grades/grades.component';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -21,16 +26,20 @@ import { SharedModule } from './shared/shared.module';
     AppComponent,
     AgregarEditarStudentComponent,
     ListadoStudentComponent,
-    VerStudentComponent
+    VerStudentComponent,
+    AttendaceComponent,
+    GradesComponent,
+    
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -21,6 +21,7 @@ builder.Services.AddDbContext<StudentContext>(options =>
 
 //para poder inyectar la interfaz para el servicio
 builder.Services.AddScoped<IStudentServices, StudentServices>();
+builder.Services.AddScoped<IAttendanceServices, AttendanceServices>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("OpenCorsPolicy", builder =>

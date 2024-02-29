@@ -19,9 +19,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 //modulos
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 //componente 
 import { SpinnerComponent } from './spinner/spinner.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSelectModule} from '@angular/material/select';
+import { MatNativeDateModule } from '@angular/material/core';
+
+
 
 
 
@@ -46,11 +53,18 @@ import { SpinnerComponent } from './spinner/spinner.component';
     MatGridListModule,
     MatDatepickerModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatToolbarModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    MatNativeDateModule,
+    FormsModule
+   
     
     
   ],
   exports: [
+    CommonModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
@@ -66,7 +80,12 @@ import { SpinnerComponent } from './spinner/spinner.component';
     MatGridListModule,
     MatDatepickerModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatToolbarModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    MatNativeDateModule,
+    FormsModule
   ],
 
 })

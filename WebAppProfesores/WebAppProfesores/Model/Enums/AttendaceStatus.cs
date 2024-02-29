@@ -2,8 +2,8 @@
 {
     public enum AttendaceStatus
     {
-        Present,
         Absent,
-        Excuse
+        Present
+        
     }
 }

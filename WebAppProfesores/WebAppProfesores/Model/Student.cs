@@ -8,6 +8,6 @@ namespace WebAppProfesores.Model
         public string Name { get; set; } 
         public GenderStudent Gender { get; set; }
         public DateTimeOffset Birthday { get; set; } 
-        
+        public virtual ICollection<Attendance>? Attendances { get; set;}
     }
 }
