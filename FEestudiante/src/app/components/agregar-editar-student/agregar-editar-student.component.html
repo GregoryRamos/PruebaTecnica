@@ -20,10 +20,13 @@
                 </mat-form-field>
             </mat-grid-tile>
                     <mat-grid-tile>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Gender</mat-label>
-                        <input formControlName="gender" matInput autocomplete="off">
-                      </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Gender</mat-label>
+                            <mat-select formControlName="gender" >
+                          <mat-option [value]="0">Female</mat-option>
+                          <mat-option [value]="1">Male</mat-option>
+                            </mat-select>
+                          </mat-form-field>
 
                 </mat-grid-tile>
                 <mat-grid-tile>

@@ -1,5 +1,5 @@
 <div class="title">
-    <h1>Ver Estudiante</h1>
+    <h1>STUDENT'S INFORMATION</h1>
 </div>
 
 <div *ngIf="student !=null" class="container">
@@ -9,12 +9,12 @@
         <mat-card-title>Estudiante</mat-card-title>
         <br>
         <mat-card-content>
-            <p><strong> Nombre: </strong> {{student.name}} </p>
-            <p><strong> Genero: </strong> {{student.gender}} </p>
-            <p><strong> Nacimiento: </strong> {{student.birthday | date }} </p>
+            <p><strong> Name: </strong> {{student.name}} </p>
+            <p><strong> Gender: </strong> {{ student.gender === 1 ? 'Male' : 'Female' }} </p>
+            <p><strong> Birthday: </strong> {{student.birthday | date }} </p>
         </mat-card-content>
         <mat-card-actions>
-            <button routerLink="/liststudents" mat-raised-button>Volver</button>
+            <button routerLink="/liststudents" mat-raised-button>Return</button>
         </mat-card-actions>
 
     </mat-card>
