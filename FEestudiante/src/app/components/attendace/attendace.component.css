@@ -1,0 +1,9 @@
+.fecha{
+    display: flex;
+    justify-content: space-between;
+}
+
+.button{
+    text-align: end;
+
+}
