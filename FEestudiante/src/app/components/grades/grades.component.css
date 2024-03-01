@@ -1,0 +1,46 @@
+.fecha{
+    display: flex;
+    justify-content: space-between;
+}
+
+.button{
+    text-align: end;
+
+}
+
+.check{
+    color: green;
+    
+}
+
+.equis{
+    color: red;
+}
+
+.entrada{
+    width: 40px;
+    height: 120px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    outline: none; 
+    margin: auto;
+    
+}
+
+.gsubject{
+    color: gray;
+}
+
+.cell-input{
+    width: 120px;
+    height: 80px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    outline: none; 
+    margin: auto;
+}
+
+
+
+
+
+
+

@@ -1,1 +1,77 @@
-<p>grades works!</p>
+<app-spinner *ngIf="loading"></app-spinner>
+
+
+<div class="container">
+
+    <div class="fecha">
+        <mat-form-field>
+            <mat-label>Subject</mat-label>
+            <mat-select [(ngModel)]="selecValue" (selectionChange)="getSelect($event)" >
+           
+          <mat-option [value]="1">Lengua Española</mat-option>
+          <mat-option [value]="2">Matemáticas</mat-option>
+          <mat-option [value]="3">Ciencias Sociales</mat-option>
+          <mat-option [value]="4">Ciencias Naturales</mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+    </div>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z5" matSort>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="studentId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.studentId}} </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+                <!-- Name Column -->
+        <ng-container matColumnDef="grades">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Grades </th>
+          <td mat-cell class="cell-input" *matCellDef="let element"> 
+            <mat-form-field>
+              <input  class="entrada" matInput min="0" max="100" [(ngModel)]="element.grades" (ngModelChange)="onGradeChange($event, element)"  maxlength="3" (input)="removeNonNumeric($event)">
+              
+            </mat-form-field>
+          
+           
+          </td>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        
+        <ng-container matColumnDef="literals">
+          <th mat-header-cell *matHeaderCellDef autocomplete="false"> Literals </th>
+          <td mat-cell *matCellDef="let element"> 
+            {{getGrade(element.grades)}}
+          </td>
+           
+
+        </ng-container>
+     
+
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+    
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements">
+    </mat-paginator>
+
+    <div class="button">
+      <button type="submit" class="btnaceptar" mat-raised-button color="primary" (click)="saveGrade()">Save</button>
+    </div>
+    
+  
+</div>
+

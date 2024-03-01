@@ -4,6 +4,7 @@ namespace WebAppProfesores.Model.Interfaces
 {
     public interface IAttendanceServices : IBaseService<Attendance>
     {
-        List<AttendanceViewModel>? GetAttendaceByDate(DateTimeOffset date, int subjectid);
+        List<AttendanceDTO>? GetAttendaceByDate(DateTimeOffset date, int subjectid);
+        Task SaveAttendance(List<AttendanceDTO> attendancelist);
     }
 }

@@ -12,6 +12,10 @@ namespace WebAppProfesores.Model.Configuration
             builder.HasMany(x => x.Attendances)
                 .WithOne(x => x.Student)
                 .HasForeignKey(x => x.StudentId);
+
+            builder.HasMany(x => x.Grades)
+                .WithOne(x => x.Student)
+                .HasForeignKey(x => x.StudentId);
         }
     }
 }

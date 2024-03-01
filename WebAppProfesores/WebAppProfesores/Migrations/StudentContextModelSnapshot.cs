@@ -22,7 +22,7 @@ namespace WebAppProfesores.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("WebAppProfesores.Model.Attendace", b =>
+            modelBuilder.Entity("WebAppProfesores.Model.Attendance", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -72,6 +72,10 @@ namespace WebAppProfesores.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("StudentId");
+
+                    b.HasIndex("SubjectId");
 
                     b.ToTable("Grades");
                 });
@@ -146,7 +150,7 @@ namespace WebAppProfesores.Migrations
                         });
                 });
 
-            modelBuilder.Entity("WebAppProfesores.Model.Attendace", b =>
+            modelBuilder.Entity("WebAppProfesores.Model.Attendance", b =>
                 {
                     b.HasOne("WebAppProfesores.Model.Student", "Student")
                         .WithMany("Attendances")
@@ -165,14 +169,37 @@ namespace WebAppProfesores.Migrations
                     b.Navigation("Subject");
                 });
 
+            modelBuilder.Entity("WebAppProfesores.Model.Grades", b =>
+                {
+                    b.HasOne("WebAppProfesores.Model.Student", "Student")
+                        .WithMany("Grades")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebAppProfesores.Model.Subject", "Subject")
+                        .WithMany("Grades")
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Student");
+
+                    b.Navigation("Subject");
+                });
+
             modelBuilder.Entity("WebAppProfesores.Model.Student", b =>
                 {
                     b.Navigation("Attendances");
+
+                    b.Navigation("Grades");
                 });
 
             modelBuilder.Entity("WebAppProfesores.Model.Subject", b =>
                 {
                     b.Navigation("Attendances");
+
+                    b.Navigation("Grades");
                 });
 #pragma warning restore 612, 618
         }

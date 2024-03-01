@@ -9,5 +9,6 @@ namespace WebAppProfesores.Model
         public GenderStudent Gender { get; set; }
         public DateTimeOffset Birthday { get; set; } 
         public virtual ICollection<Attendance>? Attendances { get; set;}
+        public virtual ICollection<Grades>? Grades { get; set; }
     }
 }

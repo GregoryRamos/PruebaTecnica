@@ -27,40 +27,11 @@ namespace WebAppProfesores.Controllers
 
         // POST api/<AttendanceController>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] List<AttendanceViewModel> attendancelist)
+        public async Task<IActionResult> Post([FromBody] List<AttendanceDTO> attendancelist)
         {
             try
             {
-                if (attendancelist.Any(x => x.Id == null))
-                {
-                    foreach (var item in attendancelist)
-                    {
-                        await _attendanceService.CreateAsync(new Attendance
-                        {
-                            StudentId = item.StudentId,
-                            SubjectId = item.SubjectId,
-                            Date = item.Date,
-                            comment = item.Comment,
-                            Status = item.Status,
-                        });
-                    }
-                }
-                else
-                {
-
-                    foreach (var item in attendancelist)
-                    {
-                        var itemtu = await _attendanceService.GetByIdAsync((int)item.Id);
-                        if (itemtu.Status != item.Status || itemtu.comment != item.Comment )
-                        {
-                            itemtu.Status = item.Status;
-                            itemtu.comment = item.Comment;
-                            await _attendanceService.UpdateAsync(itemtu);
-                        }
-                       
-                    }
-                }
-
+                await _attendanceService.SaveAttendance(attendancelist);  
                 return Ok();
             }
             catch (Exception e)
@@ -68,21 +39,9 @@ namespace WebAppProfesores.Controllers
 
                 return BadRequest(e);
             }
-            
-
 
         }
 
-        // PUT api/<AttendanceController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<AttendanceController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+       
     }
 }

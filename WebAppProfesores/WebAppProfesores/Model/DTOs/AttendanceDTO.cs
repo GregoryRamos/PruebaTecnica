@@ -2,7 +2,7 @@
 
 namespace WebAppProfesores.Model.ViewModels
 {
-    public class AttendanceViewModel
+    public class AttendanceDTO
     {
         public int? Id { get; set; }
         public int StudentId { get; set; }
