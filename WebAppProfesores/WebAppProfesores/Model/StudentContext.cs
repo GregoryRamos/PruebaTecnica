@@ -24,6 +24,7 @@ namespace WebAppProfesores.Model
             modelBuilder.ApplyConfiguration(new StudentEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new StudentEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new SubjectEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new GradesEntityTypeConfiguration());
 
             modelBuilder.Entity<Subject>().HasData(
                 new Subject
